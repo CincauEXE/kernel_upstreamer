@@ -112,7 +112,6 @@ if [[ `cat /tmp/conflicts` != "" ]]; then
 	done </tmp/conflicts
 else
 	echo "STOP, No conflicts found!"
-	exit
 fi;
 
 #Start executing standard conflict resolve strategy

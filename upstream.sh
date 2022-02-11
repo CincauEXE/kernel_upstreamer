@@ -11,6 +11,10 @@
 # GH_TOKEN | Your Github Token ( repo & repo_hook )
 # GH_PUSH_REPO_URL | Your Repository for store compiled Toolchain ( without https:// or www. ) ex. github.com/xyz-prjkt/xRageTC.git
 
+# Configure
+git config --global user.name $GH_USERNAME
+git config --global user.email $GH_EMAIL
+
 #clone kernel
 git clone https://$GH_USERNAME:$GH_TOKEN@$GH_URL kernel -b $BRANCH
 cd kernel
@@ -52,7 +56,7 @@ builder_commit="$(git rev-parse HEAD)"
 # Send a notificaton to TG
 tg_post_msg "<b>$KERNEL_NAME: Kernel Upstreamer Script Started</b>%0A<b>Date : </b><code>$rel_friendly_date</code>%0A<b>Linux Version : </b><code>$LINUXVER</code>%0A"
 
-# Build LLVM
+# Upstream msg
 msg "$KERNEL_NAME: Upstreaming To $LINUXVER"
 tg_post_msg "<b>$KERNEL_NAME: Upstreaming To $LINUXVER</b>"
 TomTal=$(nproc)
@@ -150,8 +154,6 @@ echo "All done!"
 tg_post_msg "<b>$KERNEL_NAME: Upstream Complete</b>%0A<b>Linux Version : </b><code>$LINUXVER</code>%0A<b>
 
 # Push to GitHub
-git config --global user.name $GH_USERNAME
-git config --global user.email $GH_EMAIL
 pushd kernel || exit
 git checkout README.md 
 

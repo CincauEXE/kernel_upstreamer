@@ -60,10 +60,25 @@ if [[ ! -z "${2}" ]];then
     TomTal=$(($TomTal*2))
 fi
 
-#upstream
+# Upstream
 git remote add upstream https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/
 git fetch upstream $LINUXVER
 git merge FETCH_HEAD
+
+# Fix Conflict
+exit_on_signal_SIGINT() {
+	echo -e "\n\n\e[1;31m[✗] Received INTR call - Exiting...\e[0m"
+	exit 0
+}
+trap exit_on_signal_SIGINT SIGINT
+tag=ba0007851b47
+while true; do
+	echo -ne "\e[96mEnter path to file which needs fixing: \e[0m"
+	read -r path
+	sed -i "s/>>>>>>> ${tag} (configs)//g" ${path}
+	sed -i "s/=======//g" ${path}
+	sed -i "s/<<<<<<< HEAD//g" ${path}
+done
 
 tg_post_msg "<b>$KERNEL_NAME: Upstream Complete</b>%0A<b>Linux Version : </b><code>$LINUXVER</code>%0A<b>
 

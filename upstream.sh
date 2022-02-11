@@ -2,6 +2,7 @@
 
 # Secret Variable for GH ACT
 # KERNEL_NAME | Your kernel name
+# BRANCH | Your Kernel Branches
 # TG_TOKEN | Your Telegram Bot Token
 # TG_CHAT_ID | Your Telegram Channel / Group Chat ID
 # GH_USERNAME | Your Github Username
@@ -10,7 +11,7 @@
 # GH_PUSH_REPO_URL | Your Repository for store compiled Toolchain ( without https:// or www. ) ex. github.com/xyz-prjkt/xRageTC.git
 
 #clone kernel
-git clone https://$GH_USERNAME:$GH_TOKEN@$GH_URL kernel
+git clone https://$GH_USERNAME:$GH_TOKEN@$GH_URL kernel -b $BRANCH
 cd kernel
 
 # Function to show an informational message

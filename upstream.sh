@@ -67,7 +67,6 @@ git merge FETCH_HEAD
 tg_post_msg "<b>$KERNEL_NAME: Upstream Complete</b>%0A<b>Linux Version : </b><code>$LINUXVER</code>%0A<b>
 
 # Push to GitHub
-# Update Git repository
 git config --global user.name $GH_USERNAME
 git config --global user.email $GH_EMAIL
 pushd kernel || exit
@@ -75,7 +74,6 @@ git checkout README.md
 git add .
 git commit 
 
-#push
 git push -f https://$GH_USERNAME:$GH_TOKEN@$GH_URL
 popd || exit
 tg_post_msg "<b>$KERNEL_NAME: Toolchain pushed to <code>https://$GH_PUSH_REPO_URL</code></b>"

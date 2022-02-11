@@ -48,7 +48,7 @@ rel_friendly_date="$(date "+%B %-d, %Y")" # "Month day, year" format
 builder_commit="$(git rev-parse HEAD)"
 
 # Send a notificaton to TG
-tg_post_msg "<b>$LLVM_NAME: Kernel Upstreamer Script Started</b>%0A<b>Date : </b><code>$rel_friendly_date</code>%0A<b>Linux Version : </b><code>$LINUXVER</code>%0A"
+tg_post_msg "<b>$KERNEL_NAME: Kernel Upstreamer Script Started</b>%0A<b>Date : </b><code>$rel_friendly_date</code>%0A<b>Linux Version : </b><code>$LINUXVER</code>%0A"
 
 # Build LLVM
 msg "$KERNEL_NAME: Upstreaming To $LINUXVER"
@@ -69,14 +69,12 @@ tg_post_msg "<b>$LLVM_NAME: Upstream Complete</b>%0A<b>Linux Version : </b><code
 # Update Git repository
 git config --global user.name $GH_USERNAME
 git config --global user.email $GH_EMAIL
-pushd rel_repo || exit
-rm -fr ./*
-cp -r ../install/* .
-git checkout README.md # keep this as it's not part of the toolchain itself
+pushd kernel || exit
+git checkout README.md # kfeep this as it's not part of the toolchain itself
 git add .
-git commit -asm "$KERNEL_NAME: Bump to $rel_date build
+git commit 
 
-Builder commit: https://$GH_PUSH_REPO_URL/commit/$builder_commit"
-git push -f
+#push
+git push -f https://$GH_USERNAME:$GH_TOKEN@$GH_URL
 popd || exit
 tg_post_msg "<b>$KERNEL_NAME: Toolchain pushed to <code>https://$GH_PUSH_REPO_URL</code></b>"

@@ -64,7 +64,7 @@ git remote add upstream https://git.kernel.org/pub/scm/linux/kernel/git/stable/l
 git fetch upstream $LINUXVER
 git merge FETCH_HEAD
 
-tg_post_msg "<b>$LLVM_NAME: Upstream Complete</b>%0A<b>Linux Version : </b><code>$LINUXVER</code>%0A<b>
+tg_post_msg "<b>$KERNEL_NAME: Upstream Complete</b>%0A<b>Linux Version : </b><code>$LINUXVER</code>%0A<b>
 
 # Push to GitHub
 # Update Git repository

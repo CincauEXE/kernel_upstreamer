@@ -70,7 +70,7 @@ tg_post_msg "<b>$LLVM_NAME: Upstream Complete</b>%0A<b>Linux Version : </b><code
 git config --global user.name $GH_USERNAME
 git config --global user.email $GH_EMAIL
 pushd kernel || exit
-git checkout README.md # kfeep this as it's not part of the toolchain itself
+git checkout README.md 
 git add .
 git commit 
 

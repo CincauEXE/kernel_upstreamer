@@ -12,7 +12,7 @@ jobs:
       - name: Download scripts
         uses: actions/checkout@v2
 
-      - name: Deploy builder
+      - name: Deploy Upstreamer
         env:
           LINUXVER: ${{ secrets.LINUXVER}}
           BRANCH: ${{ secrets.BRANCH}}

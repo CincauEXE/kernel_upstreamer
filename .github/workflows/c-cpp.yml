@@ -12,20 +12,10 @@ jobs:
       - name: Download scripts
         uses: actions/checkout@v2
 
-      - name: clone dtc
-        run: git clone --depth=1 https://github.com/NusantaraDevs/DragonTC -b daily/10.0 clang
-
-      - name: clone gcc
-        run: git clone --depth=1 https://github.com/ZyCromerZ/aarch64-zyc-linux-gnu -b 10 gcc
-
-      - name: clone gcc32
-        run: git clone --depth=1 https://github.com/ZyCromerZ/arm-zyc-linux-gnueabi -b 10 gcc32
-
       - name: Deploy builder
         env:
           LINUXVER: ${{ secrets.LINUXVER}}
-          DEVICE_DEFCONFIG: ${{ secrets.DEVICE_DEFCONFIG}}
-          DEVICE_CODENAME: ${{ secrets.DEVICE_CODENAME}}
+          BRANCH: ${{ secrets.BRANCH}}
           KERNEL_NAME: ${{ secrets.KERNEL_NAME}}
           TG_TOKEN: ${{ secrets.TG_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
@@ -33,4 +23,4 @@ jobs:
           GH_EMAIL: ${{ secrets.GH_EMAIL }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GH_URL: ${{ secrets.GH_URL }}
-        run: . Upstream.sh
+        run: . upstream.sh

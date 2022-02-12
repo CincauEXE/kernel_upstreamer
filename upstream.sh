@@ -68,7 +68,7 @@ fi
 git remote add upstream https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/
 git fetch upstream $LINUXVER
 git merge FETCH_HEAD
-add || true
+merge || true
 
 #Auto fix git merge/cherry-pick conflicts in files
 #Revision 1
